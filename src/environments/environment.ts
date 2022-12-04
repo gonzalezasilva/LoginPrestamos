@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  api: "https://localhost:44382/api/accounts/login"
+  api: "https://localhost:44382/api/accounts/login",
+  apipeople: "https://localhost:44382/api/people",
 };
 
 /*

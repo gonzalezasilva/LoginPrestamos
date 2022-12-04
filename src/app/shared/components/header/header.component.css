@@ -13,3 +13,9 @@ header{
     font-size:larger;
 
 }
+
+.usuario_logueado{
+    float: right;
+    margin-right: 30px;
+    font-size:larger;
+}

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User } from './user';
+import { User } from '@app/user';
 import { environment } from 'src/environments/environment';
+import { Token } from '@angular/compiler';
 
 
 @Injectable({
@@ -20,14 +21,14 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
-  login(username: string, password: string) {
+  login(username: string, password: string){
     return this.http.post<any>(`${environment.api}`, { username, password })
       .pipe(map(user => {
         // Almacena los detalles del usuario y el token JWT para mantener
         // al usuario logeado incluso entre actualizaciones de las páginas
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
-        return user;
+  //      return user;
       }));
   }
   logout() {

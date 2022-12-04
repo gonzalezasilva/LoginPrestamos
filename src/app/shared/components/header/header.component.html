@@ -1,4 +1,11 @@
 
 <header>
-    <span class="titulo">misPrestamos.com</span>
+    <span class="titulo">{{appName}}</span>
+
+       
+        <a class="usuario_logueado" *ngIf="authenticationService.currentUser | async" (click)="onLogout()">
+          <span >Usuario: {{authenticationService.currentUserValue.username}}  </span>
+          <button mat-button>Logout</button>
+        </a>
+   
 </header>

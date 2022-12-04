@@ -5,10 +5,20 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './auth.guard';
+import { PeopleComponent } from './people/people.component';
+import { PersonComponent } from './person/person.component';
 
 const routes: Routes = [
- // { path: 'dos', component: DosComponent, canActivate: [AuthGuard] },
-  { path: '', component: LoginComponent }
+  { path: 'people', component: PeopleComponent, canActivate: [AuthGuard] },
+  //,children: [
+  //   { path: 'people/person/id', component: PersonComponent},
+  //   { path: 'people/person', component: PersonComponent}
+  //] },
+  { path: 'people/person/:Id', component: PersonComponent,canActivate: [AuthGuard]},
+  { path: 'people/person', component: PersonComponent,canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent },
+  { path: '', component:  LoginComponent },
+  {path: '**', redirectTo: '/people', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -16,4 +26,6 @@ const routes: Routes = [
     { enableTracing: !environment.production })],
   exports: [RouterModule]
 })
+
+
 export class AppRoutingModule { }

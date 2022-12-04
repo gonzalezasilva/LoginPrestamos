@@ -1,0 +1,33 @@
+<p>{{title}}</p>
+
+<div class="example-form">
+  <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="example-full-width" floatLabel="always">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" formControlName="name" [(ngModel)]="person.name" name="name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" floatLabel="always">
+      <mat-label>eMail</mat-label>
+      <input matInput type="text" formControlName="email" [(ngModel)]="person.email" name="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" floatLabel="always">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="text" formControlName="phone" [(ngModel)]="person.phone" name="phone">
+    </mat-form-field>
+
+
+    <mat-error *ngIf="personForm.invalid">{{getErrorMessage()}}</mat-error>
+
+
+<div class="example-button-row">
+  <button mat-raised-button type="submit" >Grabar</button>
+  <button mat-raised-button class="demo-button" (click)="cancel">Cancelar</button>
+</div>
+ 
+
+
+  </form>
+</div>

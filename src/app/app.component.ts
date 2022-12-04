@@ -1,6 +1,6 @@
 import { User } from "./user";
 import { Component, NgModule } from '@angular/core';
-import { AuthenticationService } from "./authentication.service";
+import { AuthenticationService } from "./services/authentication.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -15,6 +15,7 @@ export class AppComponent {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
+    localStorage.removeItem('currentUser');
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   logout() {
